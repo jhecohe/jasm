@@ -49,7 +49,7 @@ public class Usuario {
 	private Long estado;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="usuario_has_role", joinColumns=@JoinColumn(name="usuario_idusuario"), inverseJoinColumns=@JoinColumn(name="role_idrole"))
+	@JoinTable(name="usuario_role", joinColumns=@JoinColumn(name="usuario_idusuario"), inverseJoinColumns=@JoinColumn(name="role_idrole"))
 	private Set<Role> role;
 	
 	

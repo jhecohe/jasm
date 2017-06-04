@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+<div th:fragment="menu">
+	<ul>
+		<li><a th:href="@{/admin/unidades}">unidades</a></li>
+		<li><a th:href="@{/admin/tipoSuministro}">Tipo Suministro</a></li>
+		<li><a th:href="@{/admin/suministro}">Suministro</a></li>
+	</ul>
+</div>
+</body>
+</html>

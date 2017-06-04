@@ -5,8 +5,8 @@ import javax.validation.Valid;
 import org.jhecohe.dominio.Usuario;
 import org.jhecohe.servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,14 +56,14 @@ public class loginControlador {
 		return modelAV;
 	}
 	
-	@RequestMapping(value="/admin/seguridad/usuarioForm", method=RequestMethod.GET)
-	public ModelAndView home(){
-		ModelAndView modelAV = new ModelAndView();
-		Authentication auth= SecurityContextHolder.getContext().getAuthentication();
-		Usuario usuario = usuarioServicio.findUsuarioByEmail(auth.getName());
-		modelAV.addObject("nombre", "Bienvenido -" + usuario.getNombre()+" "+ usuario.getApellido() + " (" + usuario.getEmail() + ")");
-		modelAV.addObject("adminMessage","Contenido solo accesible solo por usuario administradores");
-		modelAV.setViewName("/admin/seguridad/usuarioForm");
-		return modelAV;
-	}
+//	@RequestMapping(value="/admin/seguridad/usuarioForm", method=RequestMethod.GET)
+//	public ModelAndView home(){
+//		ModelAndView modelAV = new ModelAndView();
+//		Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+//		Usuario usuario = usuarioServicio.findUsuarioByEmail(auth.getName());
+//		modelAV.addObject("nombre", "Bienvenido -" + usuario.getNombre()+" "+ usuario.getApellido() + " (" + usuario.getEmail() + ")");
+//		modelAV.addObject("adminMessage","Contenido solo accesible solo por usuario administradores");
+//		modelAV.setViewName("/admin/seguridad/usuarioForm");
+//		return modelAV;
+//	}
 }

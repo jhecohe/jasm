@@ -6,6 +6,8 @@
 </head>
 <body>
 <p>Listado de Unidades</p>
+<div th:replace="/admin/menu :: menu">
+</div>
 <table>
 	<tr th:each="unidad: ${unidades}">
 	<td th:text="${unidad.nombre}" style="border: solid;">Unidad</td>

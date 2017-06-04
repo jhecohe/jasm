@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>JASM Tipo Suministro</title>
+</head>
+<body>
+<div th:replace="/admin/menu :: menu"></div>
+<p>Listado de tipo Suministro</p>
+	<table>
+		<tr th:each="tipo: ${tipoSuministro}">
+			<td th:text="${tipo.nombre}" style="border: solid;"></td>
+			<td th:text="${tipo.Descripcion}" style="border: solid;"></td>
+			<td><a th:href="@{/admin/tipoSuministro/modificar/}+${tipo.idTipoSuministro}">modificar</a></td>
+			<td><a th:href="@{/admin/tipoSuministro/borrar/}+${tipo.idTipoSuministro}">borrar</a></td>
+		</tr>
+	</table>
+	
+	<a th:href="@{/admin/tipoSuministro/crear}">Agregar Tipo Suministro</a>
+</body>
+</html>
