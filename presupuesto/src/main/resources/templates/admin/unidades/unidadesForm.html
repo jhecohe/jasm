@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${unidades}" th:action="@{/admin/unidades/agregar}"
+		method="post">
+		<input type="hidden" th:field="*{idunidades}" />
+		<div th:class="form-group">
+			<label >Nombre <span >*</span></label>
+			<div>
+				<input type="text" th:field="*{nombre}" />
+			</div>
+		</div>
+		<div th:class="form-group">
+			<label>Descripcion <span>*</span></label>
+			<div>
+				<input type="text" th:field="*{descripcion}" />
+			</div>
+		</div>
+
+		<button type="submit">Submit</button>
+		
+		</form>
+</body>
+</html>

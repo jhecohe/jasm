@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>JASM - Unidades</title>
+</head>
+<body>
+<p>Listado de Unidades</p>
+<table>
+	<tr th:each="unidad: ${unidades}">
+	<td th:text="${unidad.nombre}" style="border: solid;">Unidad</td>
+	<td th:text="${unidad.descripcion}" style="border: solid;">Unidad</td>
+	<td><a th:href="@{/admin/unidades/modificar/} + ${unidad.idunidades}">Modificar</a></td>
+	<td><a th:href="@{/admin/unidades/borrar/} + ${unidad.idunidades}">Borrar</a></td>
+	</tr>
+</table>
+
+<td><a th:href="@{/admin/unidades/crear}">Crear nueva unidad</a></td>
+</body>
+</html>
