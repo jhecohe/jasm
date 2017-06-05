@@ -1,10 +1,16 @@
 package org.jhecohe.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,10 +25,10 @@ public class TipoSuministro {
 	private String nombre;
 	@Column(name="Descripcion")
 	private String descripcion;
-	
+	@OneToMany(mappedBy="tipoSuministro", cascade=CascadeType.ALL)
+	private List<Suministro> suministros = new ArrayList<>();
 	
 	public TipoSuministro() {
-		super();
 	}
 	public int getIdTipoSuministro() {
 		return idTipoSuministro;
@@ -41,6 +47,12 @@ public class TipoSuministro {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public List<Suministro> getSuministros() {
+		return suministros;
+	}
+	public void setSuministros(List<Suministro> suministros) {
+		this.suministros = suministros;
 	}
 	@Override
 	public String toString() {

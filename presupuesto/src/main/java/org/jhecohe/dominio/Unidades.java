@@ -1,10 +1,15 @@
 package org.jhecohe.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +24,8 @@ public class Unidades {
 	private String nombre;
 	@Column(name="descripcion")
 	private String descripcion;
+	@OneToMany(mappedBy="unidades", cascade=CascadeType.ALL)
+	private List<Suministro> suministros= new ArrayList<>();
 	
 	public Unidades() {
 		super();

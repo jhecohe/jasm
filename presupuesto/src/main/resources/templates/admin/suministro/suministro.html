@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="/admin/menu :: menu"></div>
+<p>Listado Suministros</p>
+<table>
+	<tr>
+		<th>codigo</th>
+		<th>nombre</th>
+		<th>descripcion</th>
+		<th>valor</th>
+		<th>Unidad</th>
+		<th>Tipo Suministro</th>
+	</tr>
+	<tr th:each="sumi: ${suministro}">
+		<td th:text="${sumi.codigo}" style="border: solid;"></td>
+		<td th:text="${sumi.nombre}" style="border: solid;"></td>
+		<td th:text="${sumi.descripcion}" style="border: solid;"></td>
+		<td th:text="${sumi.valor}" style="border: solid;"></td>
+		<td th:text="${sumi.unidades.nombre}" style="border: solid;"></td>
+		<td th:text="${sumi.tipoSuministro.nombre}" style="border: solid;"></td>
+		<td><a th:href="@{/admin/suministro/modificar/}+${sumi.idsuministro}">Modificar</a></td>
+		<td><a th:href="@{/admin/suministro/borrar/}+${sumi.idsuministro}">Borrar</a></td>
+	</tr>
+</table>
+<a th:href="@{/admin/suministro/crear}">Crear Suministro</a>
+</body>
+</html>

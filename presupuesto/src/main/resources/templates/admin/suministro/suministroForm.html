@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${suministro}"
+		th:action="@{/admin/suministro/agregar}" method="post">
+		<input type="hidden" th:field="*{idsuministro}" />
+		<input type="hidden" th:field="*{codigo}" />
+		<div th:class="form-group">
+			<label>nombre</label> <input type="text" th:field="*{nombre}" />
+		</div>
+		<div th:class="form-group">
+			<label>descripcion</label> <input type="text"
+				th:field="*{descripcion}" />
+		</div>
+		<div th:class="form-group">
+			<label>valor</label> <input type="text" th:field="*{valor}" />
+		</div>
+		<div th:class="form-group">
+			<label>Seleccione Unidad</label> <select th:field="*{unidades}">
+				<option value="">Unidad</option>
+				<option th:each="uni : ${unidadlist}" th:value="${uni.idunidades}"
+					th:text="${uni.nombre}">Unidades</option>
+			</select>
+		</div>
+		<div th:class="form-group">
+			<label>Seleccione Tipo Suministro</label> <select th:field="*{tipoSuministro}">
+				<option value="">Tipo Suministro</option>
+				<option th:each="tipo : ${tipoSuministroList}" th:value="${tipo.idTipoSuministro}"
+					th:text="${tipo.nombre}">Unidades</option>
+			</select>
+		</div>
+		
+		<input type="submit"/>
+		
+	</form>
+</body>
+</html>
