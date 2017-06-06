@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${tipoActividad}"
+		th:action="@{/admin/tipoActividad/agregar}" method="post">
+		<input type="hidden" th:field="*{idtipoActividad}" />
+		<div th:class="form-group">
+			<label>Nombre Tipo Actividad</label> <input type="text"
+				th:field="*{nombre}" />
+		</div>
+		<div th:class="form-group">
+			<label>Descripcion</label> <input type="text"
+				th:field="*{Descripcion}" />
+		</div>
+		<input type="submit" name="Aceptar" />
+	</form>
+</body>
+</html>

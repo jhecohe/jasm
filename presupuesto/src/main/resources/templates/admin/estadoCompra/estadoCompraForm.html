@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${estadoCompra}"
+		th:action="@{/admin/estadoCompra/agregar}" method="post">
+		<input type="hidden" th:field="*{idestadoCompra}" />
+		<div th:class="form-group">
+			<label>Nombre Tipo Actividad</label> <input type="text"
+				th:field="*{nombre}" />
+		</div>
+		<input type="submit" name="Aceptar" />
+	</form>
+</body>
+</html>

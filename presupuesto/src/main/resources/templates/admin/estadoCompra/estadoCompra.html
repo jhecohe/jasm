@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>JASM Tipo Suministro</title>
+</head>
+<body>
+	<div th:replace="/admin/menu :: menu"></div>
+	<p>Listado de Estado Compra</p>
+	<table>
+		<tr>
+			<th>Nombre</th>
+		</tr>
+		<tr th:each="estado: ${estadoCompra}">
+			<td th:text="${estado.nombre}" style="border: solid;"></td>
+			<td><a
+				th:href="@{/admin/estadoCompra/modificar/}+${estado.idestadoCompra}">modificar</a></td>
+			<td><a
+				th:href="@{/admin/estadoCompra/borrar/}+${estado.idestadoCompra}">borrar</a></td>
+		</tr>
+	</table>
+
+	<a th:href="@{/admin/estadoCompra/crear}">Agregar Estado Compra</a>
+</body>
+</html>
