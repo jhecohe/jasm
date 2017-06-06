@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${apu}" th:action="@{/admin/apu/agregar}" method="post">
+		<input type="hidden" th:field="*{idapu}" />
+		<div th:class="form-group">
+		<label>Nombre APU</label>
+		<input type="text" th:field="*{nombre}"/>
+		</div>
+		
+		<div th:class="form-group">
+		<label>Unidades</label>
+		<select th:field="*{unidades}">
+			<option value="">Unidades</option>
+			<option th:each="uni : ${unidadList}" th:value="${uni.idunidades}" th:text="${uni.nombre}"></option>
+		</select>
+		</div>
+		
+		<div th:class="form-group">
+		<label>Valor Total</label>
+		<input type="hidden" th:field="*{valorTotal}"/>
+		</div>
+		<input type="submit" />
+	</form>
+</body>
+</html>

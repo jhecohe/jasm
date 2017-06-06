@@ -26,6 +26,8 @@ public class Unidades {
 	private String descripcion;
 	@OneToMany(mappedBy="unidades", cascade=CascadeType.ALL)
 	private List<Suministro> suministros= new ArrayList<>();
+	@OneToMany(mappedBy="unidades", cascade=CascadeType.ALL)
+	private List<Apu> apu= new ArrayList<>();
 	
 	public Unidades() {
 		super();
@@ -47,6 +49,18 @@ public class Unidades {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public List<Suministro> getSuministros() {
+		return suministros;
+	}
+	public void setSuministros(List<Suministro> suministros) {
+		this.suministros = suministros;
+	}
+	public List<Apu> getApu() {
+		return apu;
+	}
+	public void setApu(List<Apu> apu) {
+		this.apu = apu;
 	}
 	@Override
 	public String toString() {

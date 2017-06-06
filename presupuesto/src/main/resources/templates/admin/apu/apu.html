@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+<div th:replace="/admin/menu :: menu"></div>
+	<tr>
+		<th>nombre</th>
+		<th>valor Total</th>
+	</tr>
+	<tr th:each="apu: ${apuListado}">
+		<td th:text="${apu.nombre}" style="border: solid;"></td>
+		<td th:text="${apu.unidades.nombre}" style="border: solid;"></td>
+		<td th:text="${apu.valorTotal}" style="border: solid;"></td>
+		<td><a th:href="@{/admin/apu/modificar/}+${apu.idapu}">Modificar</a></td>
+		<td><a th:href="@{/admin/apu/borrar/}+${apu.idapu}">Borrar</a></td>
+	</tr>
+</table>
+<a th:href="@{/admin/apu/crear}">Crear APU</a>
+</body>
+</html>

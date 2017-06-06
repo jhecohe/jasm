@@ -20,7 +20,8 @@
 			<label>valor</label> <input type="text" th:field="*{valor}" />
 		</div>
 		<div th:class="form-group">
-			<label>Seleccione Unidad</label> <select th:field="*{unidades}">
+			<label>Seleccione Unidad</label> 
+			<select th:field="*{unidades}">
 				<option value="">Unidad</option>
 				<option th:each="uni : ${unidadlist}" th:value="${uni.idunidades}"
 					th:text="${uni.nombre}">Unidades</option>
