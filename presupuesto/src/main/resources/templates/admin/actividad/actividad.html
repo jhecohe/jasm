@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:replace="/admin/menu :: menu"></div>
+	<table>
+	<tr>
+	<th>suministro</th>
+	<th>rendimiento</th>
+	<th>Valor Actividad</th>
+	</tr>
+	<tr th:each="acti : ${actividad}">
+	<td th:text="${acti.suministro.nombre}">suministro</td>
+	<td th:text="${acti.rendimiento}">rendimiento</td>
+	<td th:text="${acti.valorActividad}">Valor Actividad</td>
+	<td><a th:href="@{/admin/actividad/borrar/}+${acti.idactividad}">Borrar</a></td>
+	</tr>
+	</table>
+	
+	<a th:href="@{/admin/actividad/crear}">Agregar Actividad</a>
+</body>
+</html>

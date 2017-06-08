@@ -1,7 +1,10 @@
 package org.jhecohe.dominio;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,11 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="suministro")
-public class Suministro {
+public class Suministro{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +33,8 @@ public class Suministro {
 	@JoinColumn(name="idTipoSuministro")
 	private TipoSuministro tipoSuministro;
 	
+	@OneToMany(mappedBy="suministro", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<Actividad> actividad = new ArrayList<>();
 	
 	public Suministro() {
 	}
@@ -73,6 +79,12 @@ public class Suministro {
 	}
 	public void setTipoSuministro(TipoSuministro tipoSuministro) {
 		this.tipoSuministro = tipoSuministro;
+	}
+	public List<Actividad> getActividad() {
+		return actividad;
+	}
+	public void setActividad(List<Actividad> actividad) {
+		this.actividad = actividad;
 	}
 	@Override
 	public String toString() {

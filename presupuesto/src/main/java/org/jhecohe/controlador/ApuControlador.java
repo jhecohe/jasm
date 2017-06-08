@@ -3,6 +3,7 @@ package org.jhecohe.controlador;
 import javax.validation.Valid;
 
 import org.jhecohe.dominio.Apu;
+import org.jhecohe.servicio.ActividadServicio;
 import org.jhecohe.servicio.ApuServicio;
 import org.jhecohe.servicio.UnidadesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class ApuControlador {
 	
 	@Autowired
 	UnidadesServicio uniddadesServicio;
+	
+	@Autowired
+	ActividadServicio actividadServicio;
 	
 	@RequestMapping(value="/crear", method=RequestMethod.GET)
 	public String crearApu(Model model){
@@ -52,5 +56,12 @@ public class ApuControlador {
 	public String listadoApu(Model model){
 		model.addAttribute("apuListado", apuServicio.listadoApu());
 		return "/admin/apu/apu";
+	}
+	
+	@RequestMapping(value="/detalle/{idapu}")
+	public String listadoApuDetalle(@PathVariable int idapu, Model model){
+		model.addAttribute("apuDetalle", apuServicio.obtenerApuById(idapu));
+		model.addAttribute("actividadList", actividadServicio.listadoActividadByApu(idapu));
+		return "/admin/apu/apuVer";
 	}
 }

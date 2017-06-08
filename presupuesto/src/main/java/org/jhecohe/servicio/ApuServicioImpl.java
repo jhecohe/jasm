@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApuServicioImpl implements ApuServicio {
 
+	@Override
+	public Apu obtenerApuById(int idapu) {
+		return apuRepositorio.findOne(idapu);
+	}
+
 	@Autowired
 	ApuRepositorio apuRepositorio;
 	@Override

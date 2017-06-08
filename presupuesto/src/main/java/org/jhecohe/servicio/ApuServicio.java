@@ -8,5 +8,5 @@ public interface ApuServicio {
 	Apu modificarApu(int idapu);
 	void borrarApu(int idapu);
 	Iterable<Apu> listadoApu();
-	
+	Apu obtenerApuById(int idapu);
 }

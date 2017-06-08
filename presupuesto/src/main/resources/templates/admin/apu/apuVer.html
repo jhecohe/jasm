@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<p th:text="${apuDetalle.nombre}"></p>
+	<p th:text="${apuDetalle.unidades.nombre}"></p>
+	<table>
+		<tr>
+		<th>Nombre</th>
+		<th>Unidad</th>
+		<th>Valor Suministro</th>
+		<th>Rendimiento</th>
+		<th>Valor Unitario</th>
+		</tr>
+		<tr th:each="act : ${actividadList}">
+			<td th:text="${act.suministro.nombre}" style="border: solid;"></td>
+			<td th:text="${act.suministro.unidades.nombre}" style="border: solid;"></td>
+			<td th:text="${act.suministro.valor}" style="border: solid;"></td>
+			<td th:text="${act.rendimiento}" style="border: solid;"></td>
+			<td th:text="${act.valorActividad}" style="border: solid;"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>Valor Total</td>
+			<td th:text="${apuDetalle.valorTotal}"></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,7 +1,10 @@
 package org.jhecohe.dominio;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,11 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="apu")
-public class Apu {
+public class Apu{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -23,6 +27,10 @@ public class Apu {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idunidades")
 	private Unidades unidades;
+	
+	@OneToMany(mappedBy="apu", cascade = CascadeType.ALL, orphanRemoval=true)
+	private List<Actividad> actividad= new ArrayList<>();
+	
 	public Apu() {
 	}
 	public int getIdapu() {
@@ -48,6 +56,12 @@ public class Apu {
 	}
 	public void setUnidades(Unidades unidades) {
 		this.unidades = unidades;
+	}
+	public List<Actividad> getActividad() {
+		return actividad;
+	}
+	public void setActividad(List<Actividad> actividad) {
+		this.actividad = actividad;
 	}
 	@Override
 	public String toString() {

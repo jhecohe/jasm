@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${actividad}" th:action="@{/admin/actividad/agregar}"
+		method="post">
+		<p th:text="${actividad.apu.nombre}">Codigo</p>
+		<div>
+			<label>Suministro</label> <select th:field="*{suministro}">
+				<option value="">----</option>
+				<option th:each="sumi : ${suministroList}"
+					th:value="${sumi.idsuministro}" th:text="${sumi.nombre}">----</option>
+			</select>
+		</div>
+		<div th:class="form-group">
+			<label>Tipo Actividad</label> <select th:field="*{tipoActividad}">
+				<option value="">----</option>
+				<option th:each="tipo : ${tipoActividadList}"
+					th:value="${tipo.idtipoActividad}" th:text="${tipo.nombre}">----</option>
+			</select>
+		</div>
+		<div th:class="form-group">
+			<label>Estado Compra</label> <select th:field="*{estadoCompra}">
+				<option value="">----</option>
+				<option th:each="estado : ${estadoCompraList}"
+					th:value="${estado.idestadoCompra}" th:text="${estado.nombre}">----</option>
+			</select>
+		</div>
+		<div th:class="form-group">
+			<label>Rendimiento</label> <input type="text"
+				th:field="*{rendimiento}" />
+		</div>
+		<div th:class="form-group">
+			<input type="hidden" th:field="*{valorActividad}" />
+		</div>
+		<div th:class="form-group">
+			<input type="hidden" th:field="*{apu}" th:value="${actividad.apu.idapu}"/>
+		</div>
+		
+		<input type="submit" value="Agregar Suministro"/>
+	</form>
+</body>
+</html>
