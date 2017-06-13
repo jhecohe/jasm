@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:replace="/admin/menu :: menu"></div>
+	<table>
+		<tr>
+			<th style="border: solid;">Codigo</th>
+			<th style="border: solid;">Nombre</th>
+			<th style="border: solid;">Valor Total</th>
+		</tr>
+		<tr th:each="pre : ${presupuesto}">
+			<td th:text="${pre.codigo}" style="border: solid;"></td>
+			<td th:text="${pre.nombre}" style="border: solid;"></td>
+			<td th:text="${pre.valorTotal}" style="border: solid;"></td>
+			<td><a th:href="@{/admin/presupuesto/modificar/}+${pre.idpresupuesto}">Modificar</a></td>
+			<td><a th:href="@{/admin/presupuesto/detalle/}+${pre.idpresupuesto}">Ver</a></td>
+			<td><a th:href="@{/admin/presupuesto/borrar/}+${pre.idpresupuesto}">Borrar</a></td>
+			<td><a
+				th:href="@{/admin/apuLista/crearApuListaPresupuesto/}+${pre.idpresupuesto}">Agregar
+					APU</a></td>
+
+		</tr>
+	</table>
+	<a th:href="@{/admin/presupuesto/crear}">Agregar presupuesto</a>
+</body>
+</html>

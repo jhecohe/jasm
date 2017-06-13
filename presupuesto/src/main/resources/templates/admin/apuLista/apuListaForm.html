@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Agregar APU a Suministro</title>
+</head>
+<body>
+	<form th:object="${apuLista}" th:action="@{/admin/apuLista/agregar}"
+		method="post">
+		<input type="hidden" th:field="*{idapuLista}" />
+		<p th:text="${apuLista.presupuesto.nombre}"></p>
+		<p th:text="${apuLista.presupuesto.codigo}"></p>
+		<div>
+			<select th:field="*{apu}">
+				<option value="">----</option>
+				<option th:each="apu : ${apuListado}" th:value="${apu.idapu}"
+					th:text="${apu.nombre}"></option>
+			</select>
+		</div>
+		<div th:class="form-group">
+			<label>cantidad</label> <input type="text" th:field="*{cantidad}" />
+		</div>
+ 		<input type="hidden" th:field="*{presupuesto}" th:value="${apuLista.presupuesto.idpresupuesto}"/>
+			
+			<input type="submit" />
+	</form>
+</body>
+</html>

@@ -1,8 +1,7 @@
 package org.jhecohe.servicio;
 
-import java.math.BigDecimal;
-
 import org.jhecohe.dominio.Apu;
+import org.jhecohe.dominio.Unidades;
 import org.jhecohe.repositorio.ApuRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +16,20 @@ public class ApuServicioImpl implements ApuServicio {
 
 	@Autowired
 	ApuRepositorio apuRepositorio;
+	
+	@Autowired
+	UnidadesServicio unidadServicio;
+	
 	@Override
 	public Apu agregarApu(Apu apu) {
-		if (apu.getValorTotal() == null) {
-			apu.setValorTotal(new BigDecimal(0));
+		Apu apuOri = apu;
+		if (apu.getIdapu() >= 1) {
+			apuOri = apuRepositorio.findOne(apu.getIdapu());
+			apuOri.setNombre(apu.getNombre());
+//			Unidades unidad = unidadServicio.unidadesById(apu.getUnidades().getIdunidades());
+			apuOri.setUnidades(apu.getUnidades());
 		}
-		return apuRepositorio.save(apu);
+		return apuRepositorio.save(apuOri);
 	}
 
 	@Override

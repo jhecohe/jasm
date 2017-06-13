@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.og">
+<head>
+<meta charset="UTF-8" />
+<title>Listadode APUs Presupuesto</title>
+</head>
+<body>
+	<p th:text="${presupuesto.nombre}"></p>
+	<table>
+		<tr>
+			<th style="border: solid;">Descripcion APU</th>
+			<th style="border: solid;">Unidad</th>
+			<th style="border: solid;">Valor Unitario</th>
+			<th style="border: solid;">Cantidad</th>
+			<th style="border: solid;">Valor Total</th>
+		</tr>
+
+		<tr th:each="apuL : ${apuLista}">
+			<td th:text="${apuL.apu.nombre}" style="border: solid;">Descripcion
+				APU</td>
+			<td th:text="${apuL.apu.unidades.nombre}" style="border: solid;">Unidd</td>
+			<td th:text="${apuL.apu.valorTotal}" style="border: solid;">Valor
+				Unitario</td>
+			<td th:text="${apuL.cantidad}" style="border: solid;">Cantidad</td>
+			<td th:text="${apuL.valorApu}" style="border: solid;">Valor
+				Total</td>
+			<td><a
+				th:href="@{/admin/apuLista/modificar/}+${apuL.idapuLista}">Modificar</a></td>
+			<td><a th:href="@{/admin/apuLista/borrar/}+${apuL.idapuLista}+@{/}+${presupuesto.idpresupuesto}">Borrar</a></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td>TOTAL</td>
+			<td>_____________________________________</td>
+			<td>_____________________________________</td>
+			<td>_____________________________________</td>
+			<td th:text="${presupuesto.valorTotal}">Valor Total</td>
+		</tr>
+	</table>
+	<a
+		th:href="@{/admin/apuLista/crearApuListaPresupuesto/}+${presupuesto.idpresupuesto}">Agregar
+		APU</a>
+	<a th:href="@{/admin/presupuesto/}">Volver</a>
+</body>
+</html>

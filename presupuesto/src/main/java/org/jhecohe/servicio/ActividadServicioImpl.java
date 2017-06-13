@@ -18,23 +18,21 @@ public class ActividadServicioImpl implements ActividadServicio {
 	ApuServicio apuServicio;
 	
 	@Override
+	public Actividad agregarActividad(Actividad actividad) {
+		Apu apu = actividad.getApu();
+		actividad.setValorActividad((actividad.getSuministro().getValor().multiply(actividad.getRendimiento())));
+		
+		apu.setValorTotal(sumaActividades(actividad));
+		apuServicio.agregarApu(apu);
+		return actividadRepositorio.save(actividad);
+	}
+	
+	@Override
 	public Actividad agregarApu(int idapu) {
 		Actividad actividad = new Actividad();
 		Apu apu = apuServicio.obtenerApuById(idapu);
 		actividad.setApu(apu);
 		return actividad;
-	}
-	
-	@Override
-	public Actividad agregarActividad(Actividad actividad) {
-		System.out.println(actividad.toString());
-		Apu apu = actividad.getApu();
-		actividad.setValorActividad((actividad.getSuministro().getValor().multiply(actividad.getRendimiento())));
-//				multiply(new BigDecimal(actividad.getRendimiento()))));
-		
-		apu.setValorTotal(sumaActividades(actividad));
-		apuServicio.agregarApu(apu);
-		return actividadRepositorio.save(actividad);
 	}
 
 	@Override

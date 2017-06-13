@@ -31,6 +31,9 @@ public class Apu{
 	@OneToMany(mappedBy="apu", cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<Actividad> actividad= new ArrayList<>();
 	
+	@OneToMany(mappedBy="apu", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<ApuLista> apuLista = new ArrayList<>();
+	
 	public Apu() {
 	}
 	public int getIdapu() {

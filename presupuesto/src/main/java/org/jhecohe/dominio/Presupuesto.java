@@ -1,11 +1,15 @@
 package org.jhecohe.dominio;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +22,9 @@ public class Presupuesto {
 	private String codigo;
 	private String nombre;
 	private BigDecimal valorTotal;
+	
+	@OneToMany(mappedBy = "presupuesto", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<ApuLista> apuLista = new ArrayList<>();
 	
 	public Presupuesto() {
 	}
@@ -54,9 +61,17 @@ public class Presupuesto {
 		this.valorTotal = valorTotal;
 	}
 
-	@Override
-	public String toString() {
-		return "Presupuesto [idpresupuesto=" + idpresupuesto + ", codigo=" + codigo + ", nombre=" + nombre
-				+ ", valorTotal=" + valorTotal + "]";
+	public List<ApuLista> getApuLista() {
+		return apuLista;
 	}
+
+	public void setApuLista(List<ApuLista> apuLista) {
+		this.apuLista = apuLista;
+	}
+
+//	@Override
+//	public String toString() {
+//		return "Presupuesto [idpresupuesto=" + idpresupuesto + ", codigo=" + codigo + ", nombre=" + nombre
+//				+ ", valorTotal=" + valorTotal + ", apuLista=" + apuLista.size() + "]";
+//	}
 }

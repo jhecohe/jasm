@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${presupuesto}"
+		th:action="@{/admin/presupuesto/agregar}" method="post">
+		<input type="hidden" th:field="*{idpresupuesto}" />
+		<div th:class="form-group">
+			<label>codigo</label> <input type="text" th:field="*{codigo}" />
+		</div>
+		<div th:class="form-group">
+			<label>nombre</label> <input type="text" th:field="*{nombre}" />
+		</div>
+		<input type="hidden" th:field="*{valorTotal}" />
+		<input type="submit" />
+	</form>
+</body>
+</html>
