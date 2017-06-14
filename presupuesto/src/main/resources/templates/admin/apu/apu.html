@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="www.thymeleaf.org">
-<head>
+<head th:replace="menu :: cabecera">
 <meta charset="UTF-8"/>
 <title>Insert title here</title>
 </head>
 <body>
+<div th:replace="menu :: menu"></div>
 <table>
-<div th:replace="/admin/menu :: menu"></div>
 	<tr>
 		<th>nombre</th>
 		<th>valor Total</th>

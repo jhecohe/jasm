@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="www.thymeleaf.org">
-<head>
+<head th:replace="menu :: cabecera">
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 </head>
 <body>
+	<div th:replace="menu :: menu"></div>
 	<form th:object="${actividad}" th:action="@{/admin/actividad/agregar}"
 		method="post">
 		<p th:text="${actividad.apu.nombre}">Codigo</p>

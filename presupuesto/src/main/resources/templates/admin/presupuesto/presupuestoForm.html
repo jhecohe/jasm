@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="www.thymeleaf.org">
-<head>
+<head th:replace="menu :: menu">
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 </head>
 <body>
+	<div th:replace="menu :: menu"></div>
 	<form th:object="${presupuesto}"
 		th:action="@{/admin/presupuesto/agregar}" method="post">
 		<input type="hidden" th:field="*{idpresupuesto}" />

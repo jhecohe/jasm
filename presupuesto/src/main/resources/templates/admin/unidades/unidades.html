@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="www.thymeleaf.org">
-<head>
+<head th:replace="menu :: cabecera">
 <meta charset="UTF-8"></meta>
 <title>JASM - Unidades</title>
 </head>
 <body>
+<div th:replace="menu :: menu"></div>
 <p>Listado de Unidades</p>
-<div th:replace="/admin/menu :: menu">
-</div>
 <table>
 	<tr th:each="unidad: ${unidades}">
 	<td th:text="${unidad.nombre}" style="border: solid;">Unidad</td>
