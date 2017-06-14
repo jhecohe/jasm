@@ -13,8 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class SeguridadConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
@@ -53,7 +53,7 @@ public class SeguridadConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/admin/**").hasAuthority("admin").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
-				.defaultSuccessUrl("/admin/seguridad/usuarioForm")
+				.defaultSuccessUrl("/index")
 				.usernameParameter("email")
 				.passwordParameter("clave")
 				.and().logout()

@@ -15,8 +15,7 @@
 <body>
 	<div th:replace="menu :: menu"></div>
 	<form th:action="@{/registro}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Go
-			To Registration Page</button>
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Ir a la pagina de registro</button>
 	</form>
 
 	<div class="container">
@@ -30,8 +29,8 @@
 				name="clave" class="form-control" /> <br />
 
 			<div align="center" th:if="${param.error}">
-				<p style="font-size: 20; color: #FF1C19;">Email or Password
-					invalid, please verify</p>
+				<p style="font-size: 20; color: #FF1C19;">Email O Clave
+					invalida, Por favor Verifique</p>
 			</div>
 			<button class="btn btn-lg btn-primary btn-block" name="Submit"
 				value="Login" type="Submit" th:text="Login"></button>

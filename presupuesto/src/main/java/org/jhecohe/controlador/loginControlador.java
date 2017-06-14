@@ -36,6 +36,11 @@ public class loginControlador {
 		return modelAV;
 	}
 	
+	@RequestMapping(value="/index", method=RequestMethod.GET)
+	public String iniciar(){
+		return "index";
+	}
+	
 	@RequestMapping(value = "/registro", method=RequestMethod.POST)
 	public ModelAndView nuevoUsuario(@Valid Usuario usuario, BindingResult bindingResult){
 		ModelAndView modelAV = new ModelAndView();
